@@ -1,20 +1,48 @@
 {
-  "name": "notion-langchain-js",
+  "name": "next-openai-typescript-starter",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Mayo",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "type-check": "tsc --noEmit",
+    "lint": "eslint --ignore-path .gitignore \"**/*.+(ts|js|tsx)\"",
+    "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.13",
+    "@headlessui/tailwindcss": "^0.1.2",
+    "@heroicons/react": "^2.0.16",
+    "@vercel/analytics": "^0.1.11",
     "next": "13.2.3",
+    "openai": "^3.2.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.0"
   },
   "devDependencies": {
+    "@types/node": "^18.14.6",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "autoprefixer": "^10.4.13",
     "eslint": "8.35.0",
-    "eslint-config-next": "13.2.3"
-  }
+    "eslint-config-next": "13.2.3",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
+    "tsx": "^3.12.3",
+    "typescript": "^4.9.5"
+  },
+  "keywords": [
+    "starter",
+    "typescript",
+    "nextjs",
+    "langchain",
+    "openai"
+  ]
 }
