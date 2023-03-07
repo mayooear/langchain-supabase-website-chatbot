@@ -2,7 +2,7 @@
 
 Create a simple chatbot for question-answering your Notion knowledge base/docs using Openai, Typescript, LangChain and Pinecone.
 
-Tutorial video:
+[Tutorial video](https://www.youtube.com/watch?v=prbloUGlvLE)
 
 ## 📊 Example Data
 
