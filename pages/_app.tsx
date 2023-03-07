@@ -1,6 +1,5 @@
 import '@/styles/base.css';
 import type { AppProps } from 'next/app';
-import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -13,7 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <main className={inter.variable}>
         <Component {...pageProps} />
-        <Analytics />
       </main>
     </>
   );
