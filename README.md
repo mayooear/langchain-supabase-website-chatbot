@@ -1,6 +1,6 @@
-# ChatGPT for Your Notion Knowledge Base
+# A ChatBot for Your Notion Knowledge Base
 
-Create a ChatGPT like experience over your Notion docs using Typescript, LangChain and Pinecone.
+Create a simple chatbot for question-answering your Notion knowledge base/docs using Openai, Typescript, LangChain and Pinecone.
 
 Tutorial video:
 
