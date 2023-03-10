@@ -1,16 +1,21 @@
-# A ChatBot for Your Notion Knowledge Base
+# LangChain & Supabase - Create a ChatGpt Chatbot for Your Website
 
-Create a simple chatbot for question-answering your Notion knowledge base/docs using Openai, Typescript, LangChain and Pinecone.
+Create a chatgpt chatbot for your website using LangChain, Supabase, Typescript, Openai, and Next.js. LangChain is a framework that makes it easier to build scalable AI/LLM apps. Supabase is an open source Postgres database that can store embeddings using a pg vector extension.
 
 [Tutorial video](https://www.youtube.com/watch?v=prbloUGlvLE)
 
-## 📊 Example Data
+[Get in touch via twitter if you need help](https://twitter.com/mayowaoshin)
 
-This repo uses a Notion template of the support docs from [cron](https://cronhq.notion.site/Cron-Calendar-5625be54feac4e13a75b10271b65ddb7) - a next-generation calendar for professionals and teams
+The visual guide of this repo and tutorial is in the `visual guide` folder.
 
 ## Development
 
 1. Clone the repo
+
+```
+git clone [github https url]
+```
+
 2. Install packages
 
 ```
@@ -19,62 +24,59 @@ pnpm install
 
 3. Set up your `.env` file
 
-- Copy `.env.example` into `.env`
+- Copy `.env.local.example` into `.env`
   Your `.env` file should look like this:
 
 ```
 OPENAI_API_KEY=
 
-PINECONE_API_KEY=
-PINECONE_ENVIRONMENT=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
 
 ```
 
-- Visit [openai](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) and [pinecone](https://www.pinecone.io/) to retrieve API keys and insert into your `.env` file.
+- Visit [openai](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) to retrieve API keys and insert into your `.env` file.
+- Visit [supabase](https://supabase.com/) to create a database and retrieve your keys in the user dashboard as per [docs instructions](https://supabase.com/docs)
 
-4. In the `config` folder, go into `pinecone-index.ts` and replace `PINECONE_INDEX_NAME` with the index name in your pinecone dashboard.
+4. In the `config` folder, replace the urls in the array with your website urls (the script requires more than one url).
 
-## 🧑 Instructions for ingesting your own dataset
+5. In the `utils/custom_web_loader.ts` inside the `load` function replace the values of `title`, `date` and `content` with the css elements of text you'd like extract from a given webpage. You can learn more about how to use Cheerio [here](https://cheerio.js.org/)
 
-Export your dataset from Notion. You can do this by clicking on the three dots in the upper right hand corner and then clicking `Export`.
+You can add your custom elements to the metadata to meet your needs, note however that the default loader format as per below expects at least a string for `pageContent` and `metadata` that contains a `source` property as a returned value:
 
-Follow these Notion instructions: [Exporting your content](https://www.notion.so/help/export-your-content)
-
-When exporting, make sure to select the `Markdown & CSV` format option.
-
-Select `Everything`, `include subpages` and `Create folders for subpages.` Then click `Export`
-
-This will produce a `.zip` file in your Downloads folder. Move the `.zip` file into the root of this repository.
-
-Either unzip the folder using 7-Zip (or WinZip) or run the following Unix/Linux command to unzip the zip file (replace the `Export...` with your own file name).
-
-```shell
-unzip Export-d3adfe0f-3131-4bf3-8987-a52017fc1bae.zip -d Notion_DB
 ```
-
-You should see a `Notion_DB` folder in your root folder that contains markdown files and folders of your knowledge base.
-
-## Ingest data
-
-Now we need to `ingest` your docs. In **very** simple terms, ingesting is the process of converting your docs into numbers (embedding) that can be easily stored and analyzed for similarity searches.
-
-```bash
-npm run ingest
+async load(): Promise<Document[]>{
+  const $ = await this.scrape();
+      const text = $("body").text();
+    const metadata = { source: this.webPath };
+    return [new Document({ pageContent: text, metadata })];
+  }
 
 ```
 
-## Running the app
+The `pageContent` and `metadata` will later be stored in your supabase database table.
 
-Run your local dev environment `npm run dev`.
+6. Copy and run `schema.sql` in your supabase sql editor
 
-Use the search bar to ask a question about your docs.
+- cross check the `documents` table exists in the database as well as the `match_documents` function.
 
-Simple.
+## 🧑 Instructions for scraping and embedding
 
-## Deployment
+To run the scraping and embedding script in `scripts/scrape-embed.ts` simply run:
 
-You can deploy this app to the cloud with [Vercel](https://vercel.com) ([Documentation](https://nextjs.org/docs/deployment)).
+`npm run scrape-embed`
+
+This script will visit all the urls noted in the `config` folder and extract the data you specified in the `custom_web_loader.ts` file.
+
+Then it will use OpenAI's Embeddings(`text-embedding-ada-002`) to convert your scraped data into vectors.
+
+## Run the app
+
+Once you've verified that the embeddings and content have been successfully added to your supabase table, you can run the app `npm run dev` and type a question to ask your website.
 
 ## Credit
 
-This repo is inspired by [notion-qa](https://github.com/hwchase17/notion-qa)
+Frontend of this repo is inspired by [langchain-chat-nextjs](https://github.com/zahidkhawaja/langchain-chat-nextjs)
+
+This repo uses in-depth Notion guides from the [website](https://thomasjfrank.com/) of productivity expert, Thomas Frank.
