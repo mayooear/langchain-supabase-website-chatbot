@@ -25,10 +25,10 @@ export class CustomWebLoader
 
   async load(): Promise<Document[]> {
     const $ = await this.scrape();
-    const title = $('h1.entry-title').text();
-    const date = $('meta[property="article:published_time"]').attr('content');
+    const title = $('h1.ori-inshgit_header-title').text();
+    const date = $('ul.ori-inshgit_meta-details').attr('content');
 
-    const content = $('.entry-content')
+    const content = $('.ori-insight_content')
       .clone()
       .find('div.elementor, style')
       .remove()
