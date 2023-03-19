@@ -7,6 +7,13 @@ export const urlsMa = [
   'https://leyton.com/ma/news/new-office-opening-leyton-lands-in-portugal/',
   'https://leyton.com/ma/life-at-leyton/',
   'https://leyton.com/ma/tech-lab-2/',
+  'https://leyton.com/ma/leyton-sailing-team/',
+  'https://leyton.com/ma/about-us/',
+  'https://leyton.com/ma/locations/',
+  'https://leyton.com/ma/our-expertise/',
+  'https://leyton.com/ma/contact-us/',
+  'https://leyton.com/ma/',
+  'https://leyton.com/ma/corporate-social-responsibility/',
 ];
 
 // Canada

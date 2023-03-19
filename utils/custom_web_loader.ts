@@ -33,6 +33,7 @@ export class CustomWebLoader
     const date = $('ul.ori-inshgit_meta-details li:first').text();
 
     const content = [
+      $('p.ori-hero_section-description').text(),
       $('.ori-insight_content').text(),
       $('.text-image-content').text(),
       $('.items-post').text(),
@@ -40,6 +41,16 @@ export class CustomWebLoader
       $('#ori-testimonial_block .content').text(),
       $('.eleyton-header').text(),
       $('#ori-service_block').text(),
+      $('.bleu-card-body').text(),
+      $('#solo-post-list .saling-card-body').text(),
+      $('.ori-text-image-header').text(),
+      $('#ori-block_key').text(),
+      $('#ori-icon_boxes-block').text(),
+      $('#ori-why_choose_leyton_block').text(),
+      $('#ori-cards_block').text(),
+      $('#ori-location').text(),
+      $('#ori-discover_industry_block').text(),
+      $('.blog-container').text(),
     ].join('\n\n')
 
     const cleanedContent = content.replace(/\s+/g, ' ').trim();
