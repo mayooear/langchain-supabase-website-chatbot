@@ -221,9 +221,9 @@ export default function Home() {
           </main>
         </div>
         <footer className="m-auto">
-          <a href="https://twitter.com/mayowaoshin">
-            Powered by LangChain. Demo built by Mayo (Twitter: @mayowaoshin).
-          </a>
+          {/*<a href="https://twitter.com/mayowaoshin">*/}
+          {/*  Powered by LangChain. Demo built by Mayo (Twitter: @mayowaoshin).*/}
+          {/*</a>*/}
         </footer>
       </Layout>
     </>
