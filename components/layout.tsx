@@ -1,3 +1,6 @@
+import styles from "@/styles/Home.module.css";
+import Image from "next/image";
+
 interface LayoutProps {
   children?: React.ReactNode;
 }
@@ -9,7 +12,13 @@ export default function Layout({ children }: LayoutProps) {
         <div className="h-16 border-b border-b-slate-200 py-4">
           <nav className="ml-4 pl-6">
             <a href="#" className="hover:text-slate-600 cursor-pointer">
-              Home
+              <Image
+                src="/logo.png"
+                alt="Leyton.com"
+                width="120"
+                height="100"
+                priority
+              />
             </a>
           </nav>
         </div>
