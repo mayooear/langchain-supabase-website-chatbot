@@ -135,7 +135,7 @@ export default function Home() {
                   if (message.type === 'apiMessage') {
                     icon = (
                       <Image
-                        src="/Thomas-Frank-Avatar.jpg"
+                        src="/orion.png"
                         alt="AI"
                         width="40"
                         height="40"
