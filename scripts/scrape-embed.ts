@@ -6,7 +6,7 @@ import { Embeddings, OpenAIEmbeddings } from 'langchain/embeddings';
 import { SupabaseVectorStore } from 'langchain/vectorstores';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { supabaseClient } from '@/utils/supabase-client';
-import { urls } from '@/config/notionurls';
+import { urlsMa } from '@/config/leyton-urls';
 
 async function extractDataFromUrl(url: string): Promise<Document[]> {
   try {
@@ -62,4 +62,4 @@ async function splitDocsIntoChunks(docs: Document[]): Promise<Document[]> {
   } catch (error) {
     console.log('error occured:', error);
   }
-})(urls);
+})(urlsMa);
