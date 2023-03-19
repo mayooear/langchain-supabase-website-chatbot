@@ -17,7 +17,7 @@ export default function Home() {
   }>({
     messages: [
       {
-        message: 'Hi there its Tom! What would like to learn about notion?',
+        message: 'Hi there it\'s LeytonGPT! What would like to know about us?',
         type: 'apiMessage',
       },
     ],
@@ -124,7 +124,7 @@ export default function Home() {
       <Layout>
         <div className="mx-auto flex flex-col gap-4">
           <h1 className="text-2xl font-bold leading-[1.1] tracking-tighter text-center">
-            Thomas Frank Notion Guide ChatBot
+            LeytonGPT ChatBot
           </h1>
           <main className={styles.main}>
             <div className={styles.cloud}>
@@ -189,7 +189,7 @@ export default function Home() {
                     placeholder={
                       loading
                         ? 'Waiting for response...'
-                        : 'How does notion api work?'
+                        : 'Do you really have a sailing team?'
                     }
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}

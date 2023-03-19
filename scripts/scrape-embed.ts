@@ -28,7 +28,7 @@ async function extractDataFromUrls(urls: string[]): Promise<Document[]> {
   }
   console.log('data extracted from urls');
   const json = JSON.stringify(documents);
-  await fs.writeFile('franknotion.json', json);
+  await fs.writeFile('leyton.json', json);
   console.log('json file containing data saved on disk');
   return documents;
 }
