@@ -2,7 +2,7 @@
 
 Create a chatgpt chatbot for your website using LangChain, Supabase, Typescript, Openai, and Next.js. LangChain is a framework that makes it easier to build scalable AI/LLM apps. Supabase is an open source Postgres database that can store embeddings using a pg vector extension.
 
-[Tutorial video](https://www.youtube.com/watch?v=prbloUGlvLE)
+[Tutorial video](https://www.youtube.com/watch?v=R2FMzcsmQY8)
 
 [Get in touch via twitter if you need help](https://twitter.com/mayowaoshin)
 
