@@ -35,7 +35,11 @@ export class CustomWebLoader
     const content = [
       $('.ori-insight_content').text(),
       $('.text-image-content').text(),
-      $('.items-post').text()
+      $('.items-post').text(),
+      $('#ori-text_block').text(),
+      $('#ori-testimonial_block .content').text(),
+      $('.eleyton-header').text(),
+      $('#ori-service_block').text(),
     ].join('\n\n')
 
     const cleanedContent = content.replace(/\s+/g, ' ').trim();

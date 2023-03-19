@@ -5,7 +5,8 @@ export const urlsMa = [
   'https://leyton.com/ma/news/leyton-participated-in-the-meet-greet-day-organized-by-um6p/',
   'https://leyton.com/ma/news/student-engineers-visit-leyton/',
   'https://leyton.com/ma/news/new-office-opening-leyton-lands-in-portugal/',
-  'https://leyton.com/ma/life-at-leyton/'
+  'https://leyton.com/ma/life-at-leyton/',
+  'https://leyton.com/ma/tech-lab-2/',
 ];
 
 // Canada
