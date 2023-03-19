@@ -25,15 +25,18 @@ export class CustomWebLoader
 
   async load(): Promise<Document[]> {
     const $ = await this.scrape();
-    const title = $('h1.ori-inshgit_header-title').text();
-    const date = $('ul.ori-inshgit_meta-details').attr('content');
+    const title = [
+      $('h1.ori-inshgit_header-title').text(),
+      $('h1.ori-hero_section-title').text(),
+    ].join('\n\n')
 
-    const content = $('.ori-insight_content')
-      .clone()
-      .find('div.elementor, style')
-      .remove()
-      .end()
-      .text();
+    const date = $('ul.ori-inshgit_meta-details li:first').text();
+
+    const content = [
+      $('.ori-insight_content').text(),
+      $('.text-image-content').text(),
+      $('.items-post').text()
+    ].join('\n\n')
 
     const cleanedContent = content.replace(/\s+/g, ' ').trim();
 
