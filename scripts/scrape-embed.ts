@@ -17,7 +17,7 @@ async function extractDataFromUrl(url: string): Promise<Document[]> {
     } else if (url.endsWith('.txt')) {
       loader = new TextLoader(url);
     } else {
-      throw Error('Unsupported URL: ${url}');
+      throw Error(`Unsupported URL: ${url}`);
     }
     const docs = await loader.load();
     return docs;
