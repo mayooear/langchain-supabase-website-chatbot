@@ -7,10 +7,18 @@ import { SupabaseVectorStore } from 'langchain/vectorstores';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { supabaseClient } from '@/utils/supabase-client';
 import { urls } from '@/config/notionurls';
+import { TextLoader } from 'langchain/document_loaders';
 
 async function extractDataFromUrl(url: string): Promise<Document[]> {
   try {
-    const loader = new CustomWebLoader(url);
+    let loader;
+    if (url.startsWith('http')) {
+      loader = new CustomWebLoader(url);
+    } else if (url.endsWith('.txt')) {
+      loader = new TextLoader(url);
+    } else {
+      throw Error(`Unsupported URL: ${url}`);
+    }
     const docs = await loader.load();
     return docs;
   } catch (error) {
