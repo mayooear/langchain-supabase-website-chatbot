@@ -73,6 +73,7 @@ export default function Home() {
           history,
         }),
         signal: ctrl.signal,
+        openWhenHidden: true, // allow the request to continue when the tab is hidden
         onmessage: (event) => {
           if (event.data === '[DONE]') {
             setMessageState((state) => ({
