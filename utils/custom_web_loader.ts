@@ -25,10 +25,11 @@ export class CustomWebLoader
 
   async load(): Promise<Document[]> {
     const $ = await this.scrape();
-    const title = $('h1.entry-title').text();
+    const title = $('title').text();
     const date = $('meta[property="article:published_time"]').attr('content');
+    const desc = $('meta[name="description"]').attr('content');
 
-    const content = $('.entry-content')
+    const content = $('article.rm-Article')
       .clone()
       .find('div.elementor, style')
       .remove()
@@ -39,7 +40,7 @@ export class CustomWebLoader
 
     const contentLength = cleanedContent?.match(/\b\w+\b/g)?.length ?? 0;
 
-    const metadata = { source: this.webPath, title, date, contentLength };
+    const metadata = { source: this.webPath, title, desc, date, contentLength };
 
     return [new Document({ pageContent: cleanedContent, metadata })];
   }

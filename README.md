@@ -1,10 +1,8 @@
-# LangChain & Supabase - Create a ChatGpt Chatbot for Your Website
+# LangChain & Supabase - ChatGpt Chatbot for Amazon SP API Documentation
 
 Create a chatgpt chatbot for your website using LangChain, Supabase, Typescript, Openai, and Next.js. LangChain is a framework that makes it easier to build scalable AI/LLM apps. Supabase is an open source Postgres database that can store embeddings using a pg vector extension.
 
 [Tutorial video](https://www.youtube.com/watch?v=prbloUGlvLE)
-
-[Get in touch via twitter if you need help](https://twitter.com/mayowaoshin)
 
 The visual guide of this repo and tutorial is in the `visual guide` folder.
 
@@ -39,9 +37,9 @@ SUPABASE_SERVICE_ROLE_KEY=
 - Visit [openai](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) to retrieve API keys and insert into your `.env` file.
 - Visit [supabase](https://supabase.com/) to create a database and retrieve your keys in the user dashboard as per [docs instructions](https://supabase.com/docs)
 
-4. In the `config` folder, replace the urls in the array with your website urls (the script requires more than one url).
+4. In the `config` folder, replace the urls in the array with your website urls (the script requires more than one url). This is `config\spapiurls.ts`
 
-5. In the `utils/custom_web_loader.ts` inside the `load` function replace the values of `title`, `date` and `content` with the css elements of text you'd like extract from a given webpage. You can learn more about how to use Cheerio [here](https://cheerio.js.org/)
+5. In the `utils/custom_web_loader.ts` inside the `load` function replace the values of `title`, `date` and `content` with the css elements of text you'd like extract from a given webpage. You can learn more about how to use Cheerio [here](https://cheerio.js.org/). This has been tweaked to work for Amazon's API Documentation, but is not perfect. This is room for improvement on parsing more meta data and ensuring all pages are being parsed accurately. 
 
 You can add your custom elements to the metadata to meet your needs, note however that the default loader format as per below expects at least a string for `pageContent` and `metadata` that contains a `source` property as a returned value:
 
@@ -77,6 +75,7 @@ Once you've verified that the embeddings and content have been successfully adde
 
 ## Credit
 
+This repo is forked from: [langchain-supabase-website-chatbot](https://github.com/mayooear/langchain-supabase-website-chatbot)
+
 Frontend of this repo is inspired by [langchain-chat-nextjs](https://github.com/zahidkhawaja/langchain-chat-nextjs)
 
-This repo uses in-depth Notion guides from the [website](https://thomasjfrank.com/) of productivity expert, Thomas Frank.
