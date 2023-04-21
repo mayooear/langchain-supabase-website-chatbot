@@ -25,24 +25,30 @@ export class CustomWebLoader
 
   async load(): Promise<Document[]> {
     const $ = await this.scrape();
-    const title = $('h1.entry-title').text();
-    const date = $('meta[property="article:published_time"]').attr('content');
+    const normcontent = $('.content')
+    const cmpcontent = $(".cmp-text")
+    //const h3Text = $(".tab-content-text h3").text();
+  //  const h4Text = $(".tab-content-text h4").text();
+    const pText = $(".tab-content-text")
+    const hero = $(".hero-container")
 
-    const content = $('.entry-content')
+    const combinedContent = $('<div>').html(`${pText}\n${normcontent}\n${cmpcontent}\n${hero}`);
+    const tabcontent = $(combinedContent)
       .clone()
       .find('div.elementor, style')
       .remove()
       .end()
       .text();
 
-    const cleanedContent = content.replace(/\s+/g, ' ').trim();
+    const cleanedContent = tabcontent.replace(/\s+/g, ' ').trim();
 
     const contentLength = cleanedContent?.match(/\b\w+\b/g)?.length ?? 0;
-
-    const metadata = { source: this.webPath, title, date, contentLength };
+    const metadata = { source: this.webPath, contentLength };
 
     return [new Document({ pageContent: cleanedContent, metadata })];
   }
+
+
 
   static async imports(): Promise<{
     load: typeof LoadT;
